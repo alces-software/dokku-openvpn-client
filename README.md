@@ -37,7 +37,9 @@ dokku plugin:install https://github.com/alces-software/dokku-openvpn-client  ope
 
  - Add `openvpn` to the file `apt-packages` in your app's git repo.  The dokku-apt plugin will install `openvpn` in your container.
 
- - Set the app's dokku configuration to include `CONFIGURE_OPENVPN_CLIENT=true`.
+ - Set the app's dokku configuration to include `CONFIGURE_OPENVPN_CLIENT=true`.  `dokku config:set <APP> CONFIGURE_OPENVPN_CLIENT=true`.
+
+ - Set the app's docker-options to include `--cap-add=NET_ADMIN`.  `dokku docker-options:add <APP> run --cap-add=NET_ADMIN`.
 
  - Add your openvpn configuration files, auth files and certs to `/home/dokku/${APP}/DOKKU_FILES/`.  Each should be prefixed with `openvpn-client-`.  These will be copied into your container at
    `/etc/openvpn/` and the `openvpn-client-` prefix will be stripped.

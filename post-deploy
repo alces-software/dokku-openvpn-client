@@ -7,7 +7,7 @@ dokku_log_verbose "Running openvpn-client"
 
 APP="$1"
 verify_app_name "$APP"
-CONFIGURE_OPENVPN=$(config_get "${APP}" "CONFIGURE_OPENVPN")
+CONFIGURE_OPENVPN=$(config_get "${APP}" "CONFIGURE_OPENVPN_CLIENT")
 
 if [ ! -z "${CONFIGURE_OPENVPN}" ] ; then
     CONTAINER_IDS=$( \
